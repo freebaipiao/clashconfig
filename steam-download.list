@@ -2,7 +2,19 @@
 DOMAIN-SUFFIX,steamcontent.com
 DOMAIN-SUFFIX,steamcdn-a.akamaihd.net
 DOMAIN-SUFFIX,content.steampowered.com
-
+# Steam China download CDN
+DOMAIN,csgo.wmsj.cn
+DOMAIN,dl.steam.clngaa.com
+DOMAIN,dl.steam.ksyna.com
+DOMAIN,dota2.wmsj.cn
+DOMAIN,st.dl.bscstorage.net
+DOMAIN,st.dl.eccdnx.com
+DOMAIN,st.dl.pinyuncloud.com
+DOMAIN,steampowered.com.8686c.com
+DOMAIN,steamstatic.com.8686c.com
+DOMAIN,wmsjsteam.com
+DOMAIN,xz.pphimalayanrt.com
+DOMAIN-SUFFIX,steamchina.com
 # Steam Akamai and regional CDN endpoints
 DOMAIN-SUFFIX,steampipe.akamaized.net
 DOMAIN-SUFFIX,steampipe-kr.akamaized.net
@@ -18,7 +30,6 @@ DOMAIN-SUFFIX,steam.cdn.orcon.net.nz
 DOMAIN-SUFFIX,steam.cdn.slingshot.co.nz
 DOMAIN-SUFFIX,steam.cdn.webra.ru
 DOMAIN-SUFFIX,edge.steam-dns.top.comcast.net
-
 # Steam Workshop and cloud storage
 DOMAIN-SUFFIX,steamcloudsweden.blob.core.windows.net
 DOMAIN-SUFFIX,steamugcquincy.blob.core.windows.net
