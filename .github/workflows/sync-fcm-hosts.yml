@@ -1,0 +1,45 @@
+name: Sync FCM hosts
+
+on:
+  schedule:
+    - cron: '37 1,7,13,19 * * *'
+  workflow_dispatch:
+  push:
+    branches: [codex, main]
+    paths:
+      - '.github/workflows/sync-fcm-hosts.yml'
+      - 'scripts/sync_fcm_hosts.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-fcm-hosts-codex
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.repository == 'freebaipiao/clashconfig'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the configuration branch
+        uses: actions/checkout@v4
+        with:
+          ref: codex
+
+      - name: Download and convert upstream hosts
+        run: python3 scripts/sync_fcm_hosts.py
+
+      - name: Commit changed hosts to codex
+        shell: bash
+        run: |
+          git add -- fcm_dual.hosts clash-base.yml
+          if git diff --cached --quiet; then
+            echo 'FCM hosts are unchanged.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'chore: sync upstream FCM hosts'
+          git push origin HEAD:codex
