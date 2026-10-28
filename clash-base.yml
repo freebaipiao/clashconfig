@@ -143,6 +143,19 @@ dns:
     - "https://doh.pub/dns-query"
     - "https://dns.alidns.com/dns-query"
   nameserver-policy:
+    # FCM: 仅 FCM 域名走自建静态 DoH，其余域名仍按下方策略 / nameserver / fallback 解析
+    "mtalk.google.com": "https://fcm-static-doh.jwcc.workers.dev/dns-query"
+    "mtalk4.google.com": "https://fcm-static-doh.jwcc.workers.dev/dns-query"
+    "mtalk-staging.google.com": "https://fcm-static-doh.jwcc.workers.dev/dns-query"
+    "mtalk-dev.google.com": "https://fcm-static-doh.jwcc.workers.dev/dns-query"
+    "alt1-mtalk.google.com": "https://fcm-static-doh.jwcc.workers.dev/dns-query"
+    "alt2-mtalk.google.com": "https://fcm-static-doh.jwcc.workers.dev/dns-query"
+    "alt3-mtalk.google.com": "https://fcm-static-doh.jwcc.workers.dev/dns-query"
+    "alt4-mtalk.google.com": "https://fcm-static-doh.jwcc.workers.dev/dns-query"
+    "alt5-mtalk.google.com": "https://fcm-static-doh.jwcc.workers.dev/dns-query"
+    "alt6-mtalk.google.com": "https://fcm-static-doh.jwcc.workers.dev/dns-query"
+    "alt7-mtalk.google.com": "https://fcm-static-doh.jwcc.workers.dev/dns-query"
+    "alt8-mtalk.google.com": "https://fcm-static-doh.jwcc.workers.dev/dns-query"
     "geosite:cn":
       - "https://doh.pub/dns-query"
       - "https://dns.alidns.com/dns-query"
@@ -168,17 +181,19 @@ dns:
     - "https://dns.alidns.com/dns-query"
 
 hosts:
-  # BEGIN AUTO FCM HOSTS
-  "mtalk.google.com": ["142.251.188.188", "2607:f8b0:400e:c02::bc"]
-  "mtalk4.google.com": ["142.250.99.188", "2607:f8b0:400e:c07::bc"]
-  "mtalk-staging.google.com": ["74.125.20.188", "2607:f8b0:400e:c20::bc"]
-  "mtalk-dev.google.com": ["74.125.142.188", "2607:f8b0:400e:c00::bc"]
-  "alt1-mtalk.google.com": ["192.179.26.188", "2607:f8b0:400e:c1b::bc"]
-  "alt2-mtalk.google.com": ["74.125.199.188", "2607:f8b0:400e:c1e::bc"]
-  "alt3-mtalk.google.com": ["142.250.107.188", "2607:f8b0:400e:c05::bc"]
-  "alt4-mtalk.google.com": ["192.178.163.188", "2607:f8b0:400e:c09::bc"]
-  "alt5-mtalk.google.com": ["74.125.195.188", "2607:f8b0:400e:c17::bc"]
-  "alt6-mtalk.google.com": ["173.194.203.188", "2607:f8b0:400e:c0a::bc"]
-  "alt7-mtalk.google.com": ["173.194.43.188", "2607:f8b0:400e:c0c::bc"]
-  "alt8-mtalk.google.com": ["74.125.135.188", "2607:f8b0:400e:c0d::bc"]
-  # END AUTO FCM HOSTS
+  # hosts 方式已停用（改用上方 nameserver-policy + 自建 DoH）；恢复步骤见 FCM.md
+  # BEGIN AUTO FCM HOSTS (commented out)
+  #   "mtalk.google.com": ["142.251.188.188", "2607:f8b0:400e:c02::bc"]
+  #   "mtalk4.google.com": ["142.250.99.188", "2607:f8b0:400e:c07::bc"]
+  #   "mtalk-staging.google.com": ["74.125.20.188", "2607:f8b0:400e:c20::bc"]
+  #   "mtalk-dev.google.com": ["74.125.142.188", "2607:f8b0:400e:c00::bc"]
+  #   "alt1-mtalk.google.com": ["192.179.26.188", "2607:f8b0:400e:c1b::bc"]
+  #   "alt2-mtalk.google.com": ["74.125.199.188", "2607:f8b0:400e:c1e::bc"]
+  #   "alt3-mtalk.google.com": ["142.250.107.188", "2607:f8b0:400e:c05::bc"]
+  #   "alt4-mtalk.google.com": ["192.178.163.188", "2607:f8b0:400e:c09::bc"]
+  #   "alt5-mtalk.google.com": ["74.125.195.188", "2607:f8b0:400e:c17::bc"]
+  #   "alt6-mtalk.google.com": ["173.194.203.188", "2607:f8b0:400e:c0a::bc"]
+  #   "alt7-mtalk.google.com": ["173.194.43.188", "2607:f8b0:400e:c0c::bc"]
+  #   "alt8-mtalk.google.com": ["74.125.135.188", "2607:f8b0:400e:c0d::bc"]
+  # END AUTO FCM HOSTS (commented out)
+

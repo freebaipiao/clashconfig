@@ -1,4 +1,4 @@
-"""Mirror upstream FCM hosts and update only their block in the Clash base."""
+"""Refresh the parked FCM hosts block in the Clash base (currently commented out)."""
 
 import ipaddress
 import json
@@ -12,8 +12,9 @@ SOURCE = (
     "cagedbird043/fcm-hosts-next/main/fcm_dual.hosts"
 )
 ROOT = Path(__file__).resolve().parents[1]
-BEGIN = "  # BEGIN AUTO FCM HOSTS"
-END = "  # END AUTO FCM HOSTS"
+BEGIN = "  # BEGIN AUTO FCM HOSTS (commented out)"
+END = "  # END AUTO FCM HOSTS (commented out)"
+LINE = "  #   "
 FCM_DOMAIN = re.compile(
     r"(?:mtalk|mtalk4|mtalk-staging|mtalk-dev|alt[1-8]-mtalk)\.google\.com"
 )
@@ -51,7 +52,7 @@ def update_base(content, hosts):
         raise ValueError("FCM block markers are out of order")
     newline = "\r\n" if "\r\n" in content else "\n"
     entries = newline.join(
-        f"  {json.dumps(domain)}: {json.dumps(addresses)}"
+        LINE + f"{json.dumps(domain)}: {json.dumps(addresses)}"
         for domain, addresses in hosts.items()
     )
     return content[:start] + newline + entries + newline + content[end:]
